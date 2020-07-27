@@ -106,7 +106,16 @@ const Dashboard: React.FC = () => {
                 transactions.map(transaction => (
                   <tr key={transaction.id}>
                     <td className="title">{transaction.title}</td>
-                    <td className={transaction.type}>{transaction.formattedValue}</td>
+
+                    {
+                      transaction.type === 'income' && (<td className={transaction.type}>{transaction.formattedValue}</td>)
+                    }
+
+                    {
+                      transaction.type === 'outcome' && (<td className={transaction.type}> - {transaction.formattedValue}</td>)
+                    }
+
+
                     <td>{transaction.category.title}</td>
                     <td>{transaction.formattedDate}</td>
                   </tr>
